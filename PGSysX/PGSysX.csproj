@@ -81,6 +81,9 @@
     <EmbeddedResource Include="Anahaw\Anahaw.resx">
       <DependentUpon>Anahaw.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\PrereqDialog.resx">
+      <DependentUpon>PrereqDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

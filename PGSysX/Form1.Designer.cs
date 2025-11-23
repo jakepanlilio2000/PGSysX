@@ -70,6 +70,7 @@
             this.Controls.Add(this.BtnAnahaw);
             this.Controls.Add(this.BtnPurePOS);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PGSysX";
             this.ResumeLayout(false);
             this.PerformLayout();

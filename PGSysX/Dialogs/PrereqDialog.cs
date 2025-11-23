@@ -9,6 +9,13 @@ namespace PGSysX.Anahaw
         public PrereqDialog()
         {
             InitializeComponent();
+
+            // --- MOVE YOUR LINK LOGIC HERE ---
+            // The constructor is safe for lambdas and manual event wiring
+            this.lnkPutty.LinkClicked += (s, e) => System.Diagnostics.Process.Start("https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html");
+            this.lnkWinSCP.LinkClicked += (s, e) => System.Diagnostics.Process.Start("https://winscp.net/eng/download.php");
+            this.lnkChrome.LinkClicked += (s, e) => System.Diagnostics.Process.Start("https://googlechromelabs.github.io/chrome-for-testing/");
+            this.lnkPython.LinkClicked += (s, e) => System.Diagnostics.Process.Start("https://www.python.org/downloads/");
         }
 
         protected override void OnLoad(EventArgs e)
@@ -19,18 +26,17 @@ namespace PGSysX.Anahaw
 
         private void PerformChecks()
         {
+            // (Your existing logic remains the same...)
             bool putty = PrereqChecker.IsPuttyInstalled();
             bool winscp = PrereqChecker.IsWinSCPInstalled();
             bool chrome = PrereqChecker.IsChromeDriverPresent();
             bool python = PrereqChecker.IsPythonInstalled();
 
-            // UPDATE UI
             UpdateStatus(lblStatusPutty, putty);
             UpdateStatus(lblStatusWinSCP, winscp);
             UpdateStatus(lblStatusChrome, chrome);
             UpdateStatus(lblStatusPython, python);
 
-            // BYPASS LOGIC: If everything is installed, auto-close with OK
             if (putty && winscp && chrome && python)
             {
                 this.DialogResult = DialogResult.OK;
@@ -56,7 +62,6 @@ namespace PGSysX.Anahaw
         {
             PerformChecks();
 
-            // Check manually if we can close now
             if (lblStatusPutty.ForeColor == Color.Green &&
                 lblStatusWinSCP.ForeColor == Color.Green &&
                 lblStatusChrome.ForeColor == Color.Green &&
